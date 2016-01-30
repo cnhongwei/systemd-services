@@ -1,0 +1,12 @@
+[Unit]
+Description=Mldonkey - Multiple Peer-To-Peer Network Client
+After=network.target
+
+[Service]
+User=transmission
+Group=transmission
+RuntimeDirectory=mldonkey
+ExecStart=/usr/local/bin/mlnet -log_to_syslog yes -log_file /dev/null -pid /run/mldonkey
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=A tool for securing communications between a client and a DNS resolver.
+After=network.target
+Wants=network.target dnscrypt-proxy-backup.service
+# Only needed if you use pdnsd, other caching DNS servers can go here. Could be ignored too.
+#Before=pdnsd.service
+
+[Service]
+ExecStart=/usr/local/sbin/dnscrypt-proxy -a 0.0.0.0:5353 -R cisco
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
